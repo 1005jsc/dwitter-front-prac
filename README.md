@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+새 프로젝트 연습
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 고려해야할 사항
 
-## Available Scripts
+1. props 작명방법
 
-In the project directory, you can run:
+- value에는 그냥 이름을 붙인다 최대한 길지 않는 단어
+- callback에는 'on'을 붙인다
 
-### `yarn start`
+2. react Query 를 쓰냐 안쓰냐
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- react query 를 안쓴다면
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  - 서버에서는 crud의 create, update, delete는 결과값으로 통 배열을 내놓고
+    프론트에서는 받은 통배열을 바로 list로 집어 넣는다
 
-### `yarn test`
+  - 장점 : 프론트 코드가 굉장히 간편해짐
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - 단점 : 백엔드가 로직처리 다해야됨 근데 이게 원래 맞는 것일 수도
 
-### `yarn build`
+- react query를 쓴다면
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - list는 useQuery로, create, update, delete는 mutation을 쓰고,
+    invalidateQuery를 써야한다
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. 컴포넌트 종류
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   - 상단 컴포넌트와 하단 컴포넌트로 나뉜다
+   - 상단 컴포넌트
+     - list를 뿌려줘야하는 컴포넌트
+   - 하단 컴포넌트
 
-### `yarn eject`
+     - useMemo를 쓰기에 적합한 환경이다
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   - page컴포넌트에는 마지막에 'Page'라고 붙여준다
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. 아예 service 폴더구성을 postman과 아예 똑같이 맞출 수 있을 것같다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. 상단 컴포넌트의 구성
+   제일 위에 state, ref같은 변수들을 위치,
+   그 다음에 hook
+   그 다음에 useEffect
+   그 다음에 handle~~~
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+생각해보기
 
-## Learn More
+- 한 상단 컴포넌트에 여러가지 기능이 너무 많이 탑재된 경우
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - 컴포넌트 하나에 기능이 몇 개씩 탑재될수있는데
+    어떻게 하면 유지보수하기 쉽고 잘 읽히게 구분 할 수 있을까?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  통신(crud), Ui적인 기능 부분,
 
-### Code Splitting
+dwitter MVC 패턴 연습
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 만드는 과정
 
-### Analyzing the Bundle Size
+1. theme적용
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- ThemeProvider from styled component
+- context
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+2. font 적용
