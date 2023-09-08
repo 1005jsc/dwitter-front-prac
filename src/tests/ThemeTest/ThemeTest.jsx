@@ -21,7 +21,4 @@ const Button = styled.button`
   height: 80px;
 
   background-color: ${({theme}) => theme.colors.titleColor};
-
-  @media screen {
-  }
 `;
