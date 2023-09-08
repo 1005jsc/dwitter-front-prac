@@ -1,16 +1,18 @@
-import { styled } from "styled-components";
-import { useThemeContext } from "./context/ThemeProvider";
+import {styled} from 'styled-components';
+import {useThemeContext} from './context/ThemeProvider';
+import FontTest from './components/FontTest/FontTest';
 
 function App() {
-  const { toggleTheme } = useThemeContext();
+  const {toggleTheme} = useThemeContext();
 
   return (
-    <div className='App'>
+    <div className="App">
+      <FontTest />
+
       <Button
         onClick={() => {
           toggleTheme();
-        }}
-      >
+        }}>
         띰 버튼
       </Button>
     </div>
@@ -23,5 +25,8 @@ const Button = styled.button`
   width: 120px;
   height: 80px;
 
-  background-color: ${({ theme }) => theme.colors.titleColor};
+  background-color: ${({theme}) => theme.colors.titleColor};
+
+  @media screen {
+  }
 `;

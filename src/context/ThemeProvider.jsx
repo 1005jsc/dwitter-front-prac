@@ -1,23 +1,23 @@
-import { ThemeProvider as ThemeProviderStyledComponents } from "styled-components";
+import {ThemeProvider as ThemeProviderStyledComponents} from 'styled-components';
 
-import { createContext, useContext, useMemo, useState } from "react";
-import { dark, light } from "../style/_themeColor";
+import {createContext, useContext, useMemo, useState} from 'react';
+import {darkTheme, lightTheme} from '../style';
 
 const ThemeContext = createContext({});
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({children}) => {
   const [themeMode, setThemeMode] = useState(false);
-  const theme = themeMode ? light : dark;
+  const theme = themeMode ? lightTheme : darkTheme;
 
   const toggleTheme = () => {
-    setThemeMode((prev) => !prev);
+    setThemeMode(prev => !prev);
   };
 
   const context = useMemo(
     () => ({
       toggleTheme,
     }),
-    []
+    [],
   );
 
   return (
