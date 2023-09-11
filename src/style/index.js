@@ -17,6 +17,12 @@ const defaultTheme = {
     NotoSansKr: {
       regular: 'NotoSansKR',
     },
+    NotoSansJP: {
+      regular: 'NotoSanJP',
+    },
+    Roboto: {
+      regular: 'Roboto',
+    },
   },
 };
 

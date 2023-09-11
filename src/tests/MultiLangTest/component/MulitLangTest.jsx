@@ -41,6 +41,8 @@ const MultiLangTest = () => {
           ]}
         />
       </CheckboxSmallWrap>
+
+      <MultiSpan>{_text[language][5]}</MultiSpan>
     </>
   );
 };
@@ -55,9 +57,23 @@ const CheckboxText = styled.span`
   margin-right: 8px;
 `;
 
+const MultiSpan = styled.span``;
+
 // 여기는 문제가 생길수도 있다 언어 종류가 별로 없어서
 const _text = {
-  ko: {1: '언어선택', 2: '한국어', 3: 'English', 4: 'Japanese'},
-  'en-US': {1: 'language', 2: 'Korean', 3: 'English', 4: 'Japanese'},
-  jp: {1: '言語選択', 2: '韓国語', 3: 'English', 4: '日本語'},
+  ko: {
+    1: '언어선택',
+    2: '한국어',
+    3: 'English',
+    4: 'Japanese',
+    5: '폰트가 바뀌게 하기 ',
+  },
+  'en-US': {
+    1: 'language',
+    2: 'Korean',
+    3: 'English',
+    4: 'Japanese',
+    5: 'Font may differ',
+  },
+  jp: {1: '言語選択', 2: '韓国語', 3: 'English', 4: '日本語', 5: 'yoyoyo'},
 };

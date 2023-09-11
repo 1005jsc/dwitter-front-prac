@@ -1,5 +1,7 @@
 import {createGlobalStyle} from 'styled-components';
 import NotoSansKRRegular from '../assets/fonts/NotoSansKR.ttf';
+import NotoSansJPRegular from '../assets/fonts/NotoSansJP.ttf';
+import RobotoRegular from '../assets/fonts/Roboto.ttf';
 import LatoBlack from '../assets/fonts/LatoBlack.ttf';
 import LatoBlackItalic from '../assets/fonts/LatoBlackItalic.ttf';
 import LatoBold from '../assets/fonts/LatoBold.ttf';
@@ -16,9 +18,28 @@ import LatoThinItalic from '../assets/fonts/LatoThinItalic.ttf';
 
 export const GlobalStyles = createGlobalStyle`
 
+
+  body{
+    font-family: ${({language}) => {
+      console.log('언어여');
+      console.log(language);
+    }};
+  }
+
+
   @font-face {
     font-family: 'NotoSansKR';    
     src: url(${NotoSansKRRegular}) format('truetype');   
+
+  }
+  @font-face {
+    font-family: 'NotoSansJP';    
+    src: url(${NotoSansJPRegular}) format('truetype');   
+
+  }
+  @font-face {
+    font-family: 'Roboto';    
+    src: url(${RobotoRegular}) format('truetype');   
 
   }
 
