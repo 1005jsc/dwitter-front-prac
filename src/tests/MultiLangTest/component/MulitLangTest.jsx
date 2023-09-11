@@ -1,16 +1,9 @@
-import {useEffect, useState} from 'react';
 import Radio from './Radio/Radio';
 import {styled} from 'styled-components';
 import {useLangContext} from '../context/LangProvider';
 
 const MultiLangTest = () => {
   const {language, changeLanguage} = useLangContext();
-
-  console.log('리렌더링이 일어남 3');
-
-  useEffect(() => {
-    console.log('MultiLang ' + language);
-  }, [language]);
 
   const handleIsMakersChange = e => {
     changeLanguage(e.target.value);
@@ -30,19 +23,19 @@ const MultiLangTest = () => {
             {
               //   value: language === 'ko' ? 'ko' : false,
               value: 'ko',
-              defaultChecked: true,
+              defaultChecked: language === 'ko',
               title: _text[language][2],
             },
             {
               //   value: language === 'en-US' ? 'en-US' : false,
               value: 'en-US',
-              defaultChecked: false,
+              defaultChecked: language === 'en-US',
               title: _text[language][3],
             },
             {
               //   value: language === 'jp' ? 'jp' : false,
               value: 'jp',
-              defaultChecked: false,
+              defaultChecked: language === 'jp',
               title: _text[language][4],
             },
           ]}
@@ -62,6 +55,7 @@ const CheckboxText = styled.span`
   margin-right: 8px;
 `;
 
+// 여기는 문제가 생길수도 있다 언어 종류가 별로 없어서
 const _text = {
   ko: {1: '언어선택', 2: '한국어', 3: 'English', 4: 'Japanese'},
   'en-US': {1: 'language', 2: 'Korean', 3: 'English', 4: 'Japanese'},

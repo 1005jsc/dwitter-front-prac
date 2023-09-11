@@ -6,8 +6,6 @@ import MultiLangTest from './tests/MultiLangTest/component/MulitLangTest';
 import {useLangContext} from './tests/MultiLangTest/context/LangProvider';
 
 function App() {
-  console.log('리렌더링이 일어남 2');
-
   return (
     <div className="App">
       {/* <FontTest /> */}
