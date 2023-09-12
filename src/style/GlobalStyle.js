@@ -13,16 +13,29 @@ import LatoRegular from '../assets/fonts/LatoRegular.ttf';
 import LatoThin from '../assets/fonts/LatoThin.ttf';
 import LatoThinItalic from '../assets/fonts/LatoThinItalic.ttf';
 
-// console.log('이름');
-// console.log(NotoSansKRRegular);
-
 export const GlobalStyles = createGlobalStyle`
 
 
   body{
-    font-family: ${({language}) => {
-      console.log('언어여');
-      console.log(language);
+    font-family: ${({language, theme}) => {
+      switch (language) {
+        case 'ko':
+          console.log('한국어');
+          console.log();
+          return theme.fonts.NotoSansKr.regular;
+
+        case 'en-US':
+          console.log('영어');
+          return theme.fonts.Roboto.regular;
+
+        case 'jp':
+          console.log('일본어');
+          return theme.fonts.NotoSansJP.regular;
+
+        default:
+          console.log('영어');
+          return theme.fonts.Roboto.regular;
+      }
     }};
   }
 
