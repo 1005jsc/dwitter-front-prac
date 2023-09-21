@@ -9,6 +9,8 @@ const MultiLangTest = () => {
     changeLanguage(e.target.value);
   };
 
+  console.log(language);
+
   if (!language) return;
 
   return (
@@ -68,7 +70,7 @@ const _text = {
     4: 'Japanese',
     5: '폰트가 바뀌게 하기 ',
   },
-  'en-US': {
+  en: {
     1: 'language',
     2: 'Korean',
     3: 'English',

@@ -1,11 +1,5 @@
 export const languages = {
-  ko,
-  'en-US': en,
-  jp,
+  ko: 'ko',
+  en: 'en',
+  jp: 'jp',
 };
-
-const ko = {};
-
-const en = {};
-
-const jp = {};

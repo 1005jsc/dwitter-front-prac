@@ -1,4 +1,5 @@
 import {createContext, useContext, useEffect, useMemo, useState} from 'react';
+import {convertLang} from './logics';
 
 const LangContext = createContext({});
 
@@ -6,12 +7,16 @@ const LangProvider = ({children}) => {
   const [language, setLanguage] = useState(undefined);
 
   useEffect(() => {
-    const langLocal = localStorage.getItem('lang');
+    const langLocal = convertLang(localStorage.getItem('lang'));
+
+    // 리스트 안에 있는 언어를 선택할 수 있게한다
+
+    // 선택된 언어가 없다면 영어로 뜨게 한다
 
     if (!!langLocal) {
       setLanguage(langLocal);
     } else {
-      setLanguage(window.navigator.language);
+      setLanguage(convertLang(window.navigator.language));
     }
   }, []);
 
