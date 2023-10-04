@@ -20,20 +20,20 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${({language, theme}) => {
       switch (language) {
         case 'ko':
-          console.log('한국어');
-          console.log();
+          console.log('언어: 한국어');
+
           return theme.fonts.NotoSansKr.regular;
 
-        case 'en-US':
-          console.log('영어');
+        case 'en':
+          console.log('언어: 영어');
           return theme.fonts.Roboto.regular;
 
         case 'jp':
-          console.log('일본어');
+          console.log('언어: 일본어');
           return theme.fonts.NotoSansJP.regular;
 
         default:
-          console.log('영어');
+          console.log('언어: 영어');
           return theme.fonts.Roboto.regular;
       }
     }};

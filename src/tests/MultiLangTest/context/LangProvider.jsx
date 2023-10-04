@@ -9,10 +9,6 @@ const LangProvider = ({children}) => {
   useEffect(() => {
     const langLocal = convertLang(localStorage.getItem('lang'));
 
-    // 리스트 안에 있는 언어를 선택할 수 있게한다
-
-    // 선택된 언어가 없다면 영어로 뜨게 한다
-
     if (!!langLocal) {
       setLanguage(langLocal);
     } else {
@@ -33,7 +29,7 @@ const LangProvider = ({children}) => {
 
   return (
     <LangContext.Provider value={context}>
-      {language ? children : <div>로딩중..</div>}
+      {language ? children : <div>Loading..</div>}
     </LangContext.Provider>
   );
 };

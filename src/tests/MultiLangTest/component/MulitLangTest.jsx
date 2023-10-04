@@ -9,8 +9,6 @@ const MultiLangTest = () => {
     changeLanguage(e.target.value);
   };
 
-  console.log(language);
-
   if (!language) return;
 
   return (
@@ -30,8 +28,8 @@ const MultiLangTest = () => {
             },
             {
               //   value: language === 'en-US' ? 'en-US' : false,
-              value: 'en-US',
-              defaultChecked: language === 'en-US',
+              value: 'en',
+              defaultChecked: language === 'en',
               title: _text[language][3],
             },
             {
