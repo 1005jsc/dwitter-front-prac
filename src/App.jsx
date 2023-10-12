@@ -4,6 +4,7 @@ import ThemeTest from './tests/ThemeTest/ThemeTest';
 import MultiLangTest from './tests/MultiLangTest/component/MulitLangTest';
 import {useLangContext} from './tests/MultiLangTest/context/LangProvider';
 import ToastUiEditor from './tests/ToastUiEditor/ToastUiEditor';
+import ZoomImagePage from './tests/ZoomImage/ZoomImagePage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       {/* <ThemeTest /> */}
       {/* <MultiLangTest /> */}
       {/* <ToastUiEditor /> */}
+      <ZoomImagePage />
     </div>
   );
 }
