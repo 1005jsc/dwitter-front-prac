@@ -11,10 +11,10 @@ const Image = () => {
   const [mouseStartX, setMouseStartX] = useState(0);
   const [mouseStartY, setMouseStartY] = useState(0);
 
-  const [originalPositionX, setOriginalPositionX] = useState(null);
-  const [originalPositionY, setOriginalPositionY] = useState(null);
-  const [movedPositionX, setMovedPositionX] = useState(null);
-  const [movedPositionY, setMovedPositionY] = useState(null);
+  const [originalPositionX, setOriginalPositionX] = useState(0);
+  const [originalPositionY, setOriginalPositionY] = useState(0);
+  const [movedPositionX, setMovedPositionX] = useState(0);
+  const [movedPositionY, setMovedPositionY] = useState(0);
 
   const wheelHandler = e => {
     let imageContainer;
@@ -52,20 +52,8 @@ const Image = () => {
     }
   };
 
-  const handleMouseDown = e => {
-    console.log('handleMouseDown');
-    console.log(e);
-  };
-  const handleMouseUp = e => {
-    console.log('handleMouseUp');
-    console.log(e);
-  };
-  const handleMouseMove = e => {
-    console.log('handleMouseMove');
-    console.log(e);
-  };
-
   const onDragStart = e => {
+    // e.preventDefault();
     console.log('-------onDragStart-------');
     // console.log(e);
     // console.log(e.clientX);
@@ -98,14 +86,52 @@ const Image = () => {
     setOriginalPositionY(offsetY);
   };
   const onDragEnter = e => {
+    // e.preventDefault();
     console.log('onDragEnter');
     // console.log(e);
   };
   const onDragOver = e => {
-    console.log('onDragOver');
-    // console.log(e);
+    e.preventDefault();
+    // console.log('onDragOver');
+    // // console.log(e);
 
-    // 옮기기 전 좌표
+    // // 옮기기 전 좌표
+    // let imageContainer;
+    // let offsetX = 0;
+
+    // if (imageContainerRef.current) {
+    //   imageContainer = imageContainerRef.current;
+    //   offsetX = e.clientX - imageContainer.getBoundingClientRect().left;
+    //   //   console.log(`e.client: ${e.clientX} ${e.clientY}`);
+    //   //   console.log(
+    //   //     `${imageContainer.getBoundingClientRect().left} ${
+    //   //       imageContainer.getBoundingClientRect().top
+    //   //     }`,
+    //   //   );
+    // }
+
+    // let offsetY = 0;
+
+    // if (imageContainerRef.current) {
+    //   imageContainer = imageContainerRef.current;
+    //   offsetY = e.clientY - imageContainer.getBoundingClientRect().top;
+    // }
+  };
+
+  //   useEffect(() => {
+  //     console.log('movedPositionX ' + movedPositionX);
+  //     console.log('movedPositionY ' + movedPositionY);
+  //   }, [movedPositionX, movedPositionY]);
+
+  //   useEffect(() => {
+  //     console.log('originalPositionX ' + originalPositionX);
+  //     console.log('originalPositionY ' + originalPositionY);
+  //   }, [originalPositionX, originalPositionY]);
+
+  const onDragEnd = e => {
+    console.log('드레그엔드 ');
+    e.preventDefault();
+
     let imageContainer;
     let offsetX = 0;
 
@@ -126,43 +152,19 @@ const Image = () => {
       imageContainer = imageContainerRef.current;
       offsetY = e.clientY - imageContainer.getBoundingClientRect().top;
     }
-
-    setMovedPositionX(offsetX);
-    setMovedPositionY(offsetY);
-  };
-  const onDragEnd = e => {
-    // console.log('-------');
-    console.log('onDragEnd');
-    // // console.log(e);
-    // console.log(e.clientX);
-    // console.log(e.clientY);
-    // console.log('client : ' + '(' + e.clientX + ',' + e.clientY + ')');
-
-    // console.log(e.pageX);
-    // console.log(e.pageY);
-    // console.log('page : ' + '(' + e.pageX + ',' + e.pageY + ')');
-    // console.log(e.screenX);
-    // console.log(e.screenY);
-    // console.log('screen : ' + '(' + e.screenX + ',' + e.screenY + ')');
-    // console.log('-------');
+    setMovedPositionX(offsetX - originalPositionX);
+    setMovedPositionY(offsetY - originalPositionY);
+    setOriginalPositionX(offsetX - originalPositionX);
+    setOriginalPositionY(offsetY - originalPositionY);
   };
 
-  const [moveX, setMoveX] = useState(0);
-  const [moveY, setMoveY] = useState(0);
-  useEffect(() => {
-    console.log('골골곡ㄹ');
-    console.log(movedPositionX - originalPositionX);
-    console.log(movedPositionY - originalPositionY);
-
-    // setMouseStartX()
-    // setMouseStartY
-  }, [movedPositionX, movedPositionY]);
+  const handleDrop = e => {
+    console.log(e);
+    console.log('onDrop');
+  };
 
   const handleClick = () => {
     console.log('치ㅑ차');
-
-    setMoveX(prev => prev + 60);
-    setMoveY(prev => prev + 60);
 
     // setMouseStartX();
     // setMouseStartY();
@@ -183,14 +185,20 @@ const Image = () => {
           //   onMouseUp={handleMouseUp}
           //   onMouseMove={handleMouseMove}
 
-          onDragStart={e => onDragStart(e)}
-          onDragEnter={e => onDragEnter(e)}
+          onDragStart={onDragStart}
+          onDragEnter={onDragEnter}
           onDragOver={onDragOver}
+          //   onDrop={handleDrop}
+          //   onDrop={onDragEnd}
           onDragEnd={onDragEnd}
-          moveContentX={moveX}
-          moveContentY={moveY}
-          draggable={false}>
+          dragmovecontentx={movedPositionX}
+          dragmovecontenty={movedPositionY}
+          // draggable={false}
+          //   draggable
+        >
           <WorkLargeImage src={sampleImage} alt="" />
+
+          {/* <DivImage /> */}
           {/* <Picture>
             
           </Picture> */}
@@ -220,8 +228,11 @@ const Frame = styled.div`
       }}
     )
     translate(
-      ${({moveContentX, moveContentY}) => {
-        return `${moveContentX}px , ${moveContentY}px`;
+      ${({dragmovecontentx, dragmovecontenty}) => {
+        console.log('여기확인');
+        console.log(`${dragmovecontentx}px , ${dragmovecontenty}px`);
+
+        return `${dragmovecontentx}px , ${dragmovecontenty}px`;
       }}
     );
 
@@ -237,4 +248,11 @@ const Picture = styled.div`
 
 const WorkLargeImage = styled.img`
   width: 100%;
+`;
+
+const DivImage = styled.div`
+  /* width: 100%; */
+  width: 150px;
+  height: 150px;
+  background-color: blue;
 `;
