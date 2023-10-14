@@ -17,10 +17,10 @@ const ZoomImagePage = () => {
       </ImageContainer> */}
 
       {/* <Sample2 /> */}
-      {/* <Sample3 /> */}
+      <Sample3 />
       {/* <Sample4 /> */}
       {/* <Sample5 /> */}
-      <Sample6 />
+      {/* <Sample6 /> */}
     </Container>
   );
 };

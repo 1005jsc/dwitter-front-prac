@@ -46,88 +46,102 @@ const Sample3 = () => {
         parentContainerHeight - (position.y + e.movementY) >
         stickyDivHeight - safety;
 
-      //   if (rightLimit) {
-      //     // 여기 안에서도 y축에 관한 조건을 줘야됨
-
-      //     if (topLimit) {
-      //       setPosition({
-      //         x: -Math.abs(stickyDivWidth - parentContainerWidth),
-      //         y: 0,
-      //       });
-      //     } else if (bottomLimit) {
-      //       setPosition({
-      //         x: -Math.abs(stickyDivWidth - parentContainerWidth),
-      //         y: -Math.abs(stickyDivHeight - parentContainerHeight),
-      //       });
-      //     } else {
-      //       setPosition({
-      //         x: -Math.abs(stickyDivWidth - parentContainerWidth),
-      //         y: newY,
-      //       });
-      //     }
-      //   } else if (leftLimit) {
-      //     // x:0
-
-      //     if (topLimit) {
-      //       setPosition({x: 0, y: 0});
-      //     } else if (bottomLimit) {
-      //       setPosition({
-      //         x: 0,
-      //         y: -Math.abs(stickyDivHeight - parentContainerHeight),
-      //       });
-      //     } else {
-      //       setPosition({
-      //         x: 0,
-      //         y: newY,
-      //       });
-      //     }
-      //   } else if (topLimit) {
-      //     // y:0
-
-      //     if (rightLimit) {
-      //       setPosition({
-      //         x: -Math.abs(stickyDivWidth - parentContainerWidth),
-      //         y: 0,
-      //       });
-      //     } else if (leftLimit) {
-      //       setPosition({
-      //         x: 0,
-      //         y: 0,
-      //       });
-      //     } else {
-      //       setPosition({x: newX, y: 0});
-      //     }
-      //   } else if (bottomLimit) {
-      //     // y: -Math.abs(stickyDivHeight - parentContainerHeight)
-
-      //     setPosition({
-      //       x: newX,
-      //       y: -Math.abs(stickyDivHeight - parentContainerHeight),
-      //     });
-      //   } else {
-      //     setPosition({x: newX, y: newY});
-      //   }
-
       if (rightLimit) {
-        setPosition({
-          x: -Math.abs(stickyDivWidth - parentContainerWidth),
-          y: newY,
-        });
+        // 여기 안에서도 y축에 관한 조건을 줘야됨
+
+        if (topLimit) {
+          setPosition({
+            x: -Math.abs(stickyDivWidth - parentContainerWidth),
+            y: 0,
+          });
+        } else if (bottomLimit) {
+          setPosition({
+            x: -Math.abs(stickyDivWidth - parentContainerWidth),
+            y: -Math.abs(stickyDivHeight - parentContainerHeight),
+          });
+        } else {
+          setPosition({
+            x: -Math.abs(stickyDivWidth - parentContainerWidth),
+            y: newY,
+          });
+        }
       } else if (leftLimit) {
-        setPosition({
-          x: 0,
-          y: newY,
-        });
+        // x:0
+
+        if (topLimit) {
+          setPosition({x: 0, y: 0});
+        } else if (bottomLimit) {
+          setPosition({
+            x: 0,
+            y: -Math.abs(stickyDivHeight - parentContainerHeight),
+          });
+        } else {
+          setPosition({
+            x: 0,
+            y: newY,
+          });
+        }
       } else if (topLimit) {
-        setPosition({x: newX, y: 0});
+        // y:0
+
+        if (rightLimit) {
+          setPosition({
+            x: -Math.abs(stickyDivWidth - parentContainerWidth),
+            y: 0,
+          });
+        } else if (leftLimit) {
+          setPosition({
+            x: 0,
+            y: 0,
+          });
+        } else {
+          setPosition({x: newX, y: 0});
+        }
       } else if (bottomLimit) {
-        setPosition({
-          x: newX,
-          y: -Math.abs(stickyDivHeight - parentContainerHeight),
-        });
+        // y: -Math.abs(stickyDivHeight - parentContainerHeight)
+
+        if (rightLimit) {
+          setPosition({
+            x: -Math.abs(stickyDivWidth - parentContainerWidth),
+            y: -Math.abs(stickyDivHeight - parentContainerHeight),
+          });
+        } else if (leftLimit) {
+          setPosition({
+            x: 0,
+            y: -Math.abs(stickyDivHeight - parentContainerHeight),
+          });
+        } else {
+          setPosition({
+            x: newX,
+            y: -Math.abs(stickyDivHeight - parentContainerHeight),
+          });
+        }
       } else {
         setPosition({x: newX, y: newY});
       }
+
+      /////////
+
+      // if (rightLimit) {
+      //   setPosition({
+      //     x: -Math.abs(stickyDivWidth - parentContainerWidth),
+      //     y: newY,
+      //   });
+      // } else if (leftLimit) {
+      //   setPosition({
+      //     x: 0,
+      //     y: newY,
+      //   });
+      // } else if (topLimit) {
+      //   setPosition({x: newX, y: 0});
+      // } else if (bottomLimit) {
+      //   setPosition({
+      //     x: newX,
+      //     y: -Math.abs(stickyDivHeight - parentContainerHeight),
+      //   });
+      // } else {
+      //   setPosition({x: newX, y: newY});
+      // }
     }
   };
 
@@ -141,14 +155,14 @@ const Sample3 = () => {
 
   return (
     <ParentContainer>
-      {/* <StickyDiv
+      <StickyDiv
         isdragging={isDragging}
         style={{left: `${position.x}px`, top: `${position.y}px`}}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}>
         Drag me!
-      </StickyDiv> */}
+      </StickyDiv>
     </ParentContainer>
   );
 };
