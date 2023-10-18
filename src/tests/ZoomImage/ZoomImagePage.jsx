@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 import Image from './components/Image';
-import Sample2 from './components/Sample2';
+
 import Sample3 from './components/Sample3';
-import Sample4 from './components/Sample4';
-import Sample5 from './components/Sample5';
-import Sample6 from './components/Sample6';
 
 const ZoomImagePage = () => {
   return (
@@ -16,11 +13,7 @@ const ZoomImagePage = () => {
         </GreyBackground>
       </ImageContainer> */}
 
-      {/* <Sample2 /> */}
       <Sample3 />
-      {/* <Sample4 /> */}
-      {/* <Sample5 /> */}
-      {/* <Sample6 /> */}
     </Container>
   );
 };

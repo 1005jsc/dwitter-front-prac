@@ -13,12 +13,17 @@ const MouseEventDetector = () => {
     console.log('mouseup ', e.movementX);
   };
   const handleMouseMove = e => {
-    console.log('mousemove ', e.movementX);
-    console.log(isDragging);
+    // console.log('mousemove ', e.movementX);
+    // console.log(isDragging);
     if (isDragging) {
       console.log('mousemove ', e.movementX);
     }
   };
+
+  useEffect(() => {
+    console.log('isDragging 확인');
+    console.log(isDragging);
+  }, [isDragging]);
 
   useEffect(() => {
     document.addEventListener('mousedown', handleMouseDown);
@@ -33,6 +38,8 @@ const MouseEventDetector = () => {
     };
   }, []);
 
-  return {};
+  return {
+    isDragging,
+  };
 };
 export default MouseEventDetector;
