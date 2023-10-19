@@ -73,7 +73,7 @@ const Sample3 = () => {
   return (
     <ParentContainer>
       <StickyDiv
-        isdragging={isDragging}
+        dragging={isDragging ? 1 : 0}
         style={{left: `${positionX}px`, top: `${positionY}px`}}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -105,5 +105,5 @@ const StickyDiv = styled.div`
   justify-content: center;
   align-items: center;
 
-  cursor: ${props => (props.isDragging ? 'grab' : 'default')};
+  cursor: ${({dragging}) => (dragging ? 'grab' : 'default')};
 `;
