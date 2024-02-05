@@ -6,13 +6,18 @@ import App from './App';
 import ThemeProvider from './context/ThemeProvider';
 
 import LangProvider from './tests/MultiLangTest/context/LangProvider';
+import {QueryClient, QueryClientProvider} from 'react-query';
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <LangProvider>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  </LangProvider>,
+  <QueryClientProvider client={queryClient}>
+    <LangProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </LangProvider>
+  </QueryClientProvider>,
 );
